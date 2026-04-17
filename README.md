@@ -77,8 +77,11 @@ Infrastructure remains clean over time
 📁 Project Structure
 .
 ├── variables.tf
+
 ├── main.tf
+
 ├── outputs.tf
+
 └── README.md
 
 🔄 CI/CD Integration (GitHub Actions)
@@ -139,5 +142,7 @@ Naming conventions are not just a best practice — they are critical for scalab
 By enforcing them in Terraform:
 
 ✅ Standards are automatic
+
 ✅ Errors are prevented early
+
 ✅ Infrastructure stays maintainable

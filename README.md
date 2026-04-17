@@ -13,9 +13,13 @@ Without standards, things get messy fast.
 A proper naming convention ensures:
 
 📌 Clear resource identification
+
 🔍 Easier debugging
+
 🤝 Better team collaboration
+
 ⚙️ Predictable infrastructure
+
 🏭 Production Importance
 
 Production environments demand precision and control.

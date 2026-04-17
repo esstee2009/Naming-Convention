@@ -26,8 +26,11 @@ Production environments demand precision and control.
 
 With proper naming:
 ⚡ Engineers resolve incidents faster
+
 🛡️ Critical resources are easily identifiable
+
 🚫 Risk of accidental deletion is reduced
+
 📊 Monitoring and alerts become meaningful
 
 When something breaks at 2AM, the name should tell you everything you need to know.
@@ -63,18 +66,21 @@ Enforcement → Rules are validated in Terraform
 Terraform variable validation is used to enforce naming rules.
 
 ✔️ Valid name → Deployment proceeds
+
 ❌ Invalid name → Terraform fails immediately
 
 This guarantees that:
 Only compliant resources are created
 No manual review is required
 Infrastructure remains clean over time
+
 📁 Project Structure
 .
 ├── variables.tf
 ├── main.tf
 ├── outputs.tf
 └── README.md
+
 🔄 CI/CD Integration (GitHub Actions)
 
 You can enforce validation automatically using GitHub Actions:
@@ -118,9 +124,13 @@ Multi-environment setups
 Platform / DevOps teams
 Organizations with governance policies
 📊 Future Improvements
+
 🔹 Add pre-commit hooks
+
 🔹 Extend naming to all resource types
+
 🔹 Integrate policy-as-code (OPA / Sentinel)
+
 🔹 Add automated linting (tflint)
 
 📌 Summary

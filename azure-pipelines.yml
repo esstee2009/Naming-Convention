@@ -50,4 +50,4 @@ stages:
             Write-Host "Files in directory:"
             Get-ChildItem -Recurse
             
-            checkov -d . --download-external-modules true
+            checkov -d . --download-external-modules true --framework terraform --compact

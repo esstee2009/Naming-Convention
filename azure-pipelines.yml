@@ -40,7 +40,7 @@ stages:
           inputs:
             targetType: 'inline'
             script: |
-              cd $(System.DefaultWorkingDirectory)/environment/dev
+              cd $(System.DefaultWorkingDirectory)/azurerm_resource_group
               
               Write-Host "Current path:"
               pwd

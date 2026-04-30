@@ -41,4 +41,11 @@ stages:
             targetType: 'inline'
             script: |
               cd $(System.DefaultWorkingDirectory)/environment/dev
+              
+              Write-Host "Current path:"
+              pwd
+              
+              Write-Host "Files in directory:"
+              Get-ChildItem -Recurse
+              
               checkov -d .

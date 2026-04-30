@@ -33,19 +33,21 @@ stages:
 
   - stage: SecurityTools
     jobs:
-      - job: Checkov
-        displayName: Checkov
-        steps:
-        - task: PowerShell@2
-          inputs:
-            targetType: 'inline'
-            script: |
-              cd $(System.DefaultWorkingDirectory)/azurerm_resource_group
-              
-              Write-Host "Current path:"
-              pwd
-              
-              Write-Host "Files in directory:"
-              Get-ChildItem -Recurse
-              
-              checkov -d .
+    - job: Checkov
+      displayName: Checkov
+      steps:
+      - checkout: self   # 👈 THIS IS THE KEY FIX
+
+      - task: PowerShell@2
+        inputs:
+          targetType: 'inline'
+          script: |
+            cd $(System.DefaultWorkingDirectory)/environment/dev
+            
+            Write-Host "Current path:"
+            pwd
+            
+            Write-Host "Files in directory:"
+            Get-ChildItem -Recurse
+            
+            checkov -d . --download-external-modules true

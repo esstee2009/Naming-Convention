@@ -10,7 +10,6 @@ stages:
       - job: TerraformInit
         displayName: Terraform Init
         steps:
-
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
@@ -20,3 +19,14 @@ stages:
             backendAzureRmStorageAccountName: 'tfstorage24'
             backendAzureRmContainerName: 'cloudcore'
             backendAzureRmKey: 'dev.tfstate'
+
+      - job: TerraformPlan
+        displayName: Terraform Plan
+        steps:
+        - template: template/terraformInit.yml
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+            environmentServiceNameAzureRM: 'Azure subscription 1(bc524287-f28f-43cf-9bc7-37559e1c0887)'

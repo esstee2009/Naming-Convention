@@ -36,18 +36,22 @@ stages:
     - job: Checkov
       displayName: Checkov
       steps:
-      - checkout: self   # 👈 THIS IS THE KEY FIX
+      - checkout: self
 
       - task: PowerShell@2
         inputs:
           targetType: 'inline'
           script: |
+            pip install --upgrade checkov
+
             cd $(System.DefaultWorkingDirectory)/environment/dev
-            
+
             Write-Host "Current path:"
             pwd
-            
+
             Write-Host "Files in directory:"
             Get-ChildItem -Recurse
-            
-            checkov -d . --download-external-modules true --framework terraform --compact
+
+            checkov -d . `
+              --framework terraform `
+              --skip-download

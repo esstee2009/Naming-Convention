@@ -33,25 +33,33 @@ stages:
 
   - stage: SecurityTools
     jobs:
-    - job: Checkov
-      displayName: Checkov
+    # - job: Checkov
+    #   displayName: Checkov
+    #   steps:
+    #   - checkout: self
+
+    #   - task: PowerShell@2
+    #     inputs:
+    #       targetType: 'inline'
+    #       script: |
+    #         pip install --upgrade checkov
+
+    #         cd $(System.DefaultWorkingDirectory)/environment/dev
+
+    #         Write-Host "Current path:"
+    #         pwd
+
+    #         Write-Host "Files in directory:"
+    #         Get-ChildItem -Recurse
+
+    #         checkov -d . `
+    #           --framework terraform `
+    #           --skip-download
+
+    - job: tfsec
+      displayName: TF Sec Tool
       steps:
-      - checkout: self
-
-      - task: PowerShell@2
+      - task: tfsec@1
         inputs:
-          targetType: 'inline'
-          script: |
-            pip install --upgrade checkov
-
-            cd $(System.DefaultWorkingDirectory)/environment/dev
-
-            Write-Host "Current path:"
-            pwd
-
-            Write-Host "Files in directory:"
-            Get-ChildItem -Recurse
-
-            checkov -d . `
-              --framework terraform `
-              --skip-download
+          version: 'v1.26.0'
+          dir: '$(System.DefaultWorkingDirectory)/environment/dev'
